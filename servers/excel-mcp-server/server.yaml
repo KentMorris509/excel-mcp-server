@@ -1,0 +1,39 @@
+name: excel-mcp-server
+image: mcp/excel-mcp-server
+type: server
+meta:
+  category: productivity
+  tags:
+    - excel
+    - spreadsheet
+    - data-manipulation
+    - productivity
+about:
+  title: Excel MCP Server
+  description: Manipulate Excel files without Microsoft Excel. Create, read, and modify workbooks with formulas, charts, pivot tables, and formatting.
+  icon: https://raw.githubusercontent.com/haris-musa/excel-mcp-server/main/assets/logo.png
+source:
+  project: https://github.com/haris-musa/excel-mcp-server
+  commit: f0c0ecd
+config:
+  description: Configure the Excel MCP Server file path
+  env:
+    - name: EXCEL_FILES_PATH
+      example: /excel_files
+      value: '{{excel-mcp-server.excel_files_path}}'
+    - name: FASTMCP_PORT
+      example: '8017'
+      value: '{{excel-mcp-server.fastmcp_port}}'
+  parameters:
+    type: object
+    properties:
+      excel_files_path:
+        type: string
+        default: /excel_files
+      fastmcp_port:
+        type: string
+        default: '8017'
+  volumes:
+    - name: excel_files
+      path: /excel_files
+      description: Directory for storing Excel files

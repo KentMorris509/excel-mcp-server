@@ -1,0 +1,507 @@
+[
+  {
+    "name": "create_workbook",
+    "description": "Creates a new Excel workbook at the specified file path",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path where to create workbook"
+      }
+    ]
+  },
+  {
+    "name": "create_worksheet",
+    "description": "Creates a new worksheet in an existing workbook",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Name for the new worksheet"
+      }
+    ]
+  },
+  {
+    "name": "get_workbook_metadata",
+    "description": "Get metadata about workbook including sheets and ranges",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "include_ranges",
+        "type": "boolean",
+        "desc": "Whether to include range information"
+      }
+    ]
+  },
+  {
+    "name": "write_data_to_excel",
+    "description": "Write data to Excel worksheet",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "data",
+        "type": "array",
+        "desc": "List of dictionaries containing data to write"
+      },
+      {
+        "name": "start_cell",
+        "type": "string",
+        "desc": "Starting cell (default: A1)"
+      }
+    ]
+  },
+  {
+    "name": "read_data_from_excel",
+    "description": "Read data from Excel worksheet",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Source worksheet name"
+      },
+      {
+        "name": "start_cell",
+        "type": "string",
+        "desc": "Starting cell (default: A1)"
+      },
+      {
+        "name": "end_cell",
+        "type": "string",
+        "desc": "Optional ending cell"
+      },
+      {
+        "name": "preview_only",
+        "type": "boolean",
+        "desc": "Whether to return only a preview"
+      }
+    ]
+  },
+  {
+    "name": "format_range",
+    "description": "Apply formatting to a range of cells including font, colors, borders, and alignment",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "start_cell",
+        "type": "string",
+        "desc": "Starting cell of range"
+      },
+      {
+        "name": "end_cell",
+        "type": "string",
+        "desc": "Optional ending cell of range"
+      }
+    ]
+  },
+  {
+    "name": "apply_formula",
+    "description": "Apply Excel formula to cell",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "cell",
+        "type": "string",
+        "desc": "Target cell reference"
+      },
+      {
+        "name": "formula",
+        "type": "string",
+        "desc": "Excel formula to apply"
+      }
+    ]
+  },
+  {
+    "name": "create_chart",
+    "description": "Create chart in worksheet (line, bar, pie, scatter, area)",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "data_range",
+        "type": "string",
+        "desc": "Range containing chart data"
+      },
+      {
+        "name": "chart_type",
+        "type": "string",
+        "desc": "Type of chart (line, bar, pie, scatter, area)"
+      },
+      {
+        "name": "target_cell",
+        "type": "string",
+        "desc": "Cell where to place chart"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "desc": "Optional chart title"
+      }
+    ]
+  },
+  {
+    "name": "create_pivot_table",
+    "description": "Create pivot table in worksheet",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "data_range",
+        "type": "string",
+        "desc": "Range containing source data"
+      },
+      {
+        "name": "target_cell",
+        "type": "string",
+        "desc": "Cell where to place pivot table"
+      },
+      {
+        "name": "rows",
+        "type": "array",
+        "desc": "Fields for row labels"
+      },
+      {
+        "name": "values",
+        "type": "array",
+        "desc": "Fields for values"
+      }
+    ]
+  },
+  {
+    "name": "create_table",
+    "description": "Creates a native Excel table from a specified range of data",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to the Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Name of the worksheet"
+      },
+      {
+        "name": "data_range",
+        "type": "string",
+        "desc": "The cell range for the table (e.g., A1:D5)"
+      },
+      {
+        "name": "table_name",
+        "type": "string",
+        "desc": "Optional unique name for the table"
+      },
+      {
+        "name": "table_style",
+        "type": "string",
+        "desc": "Optional visual style for the table"
+      }
+    ]
+  },
+  {
+    "name": "copy_worksheet",
+    "description": "Copy worksheet within workbook",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "source_sheet",
+        "type": "string",
+        "desc": "Name of sheet to copy"
+      },
+      {
+        "name": "target_sheet",
+        "type": "string",
+        "desc": "Name for new sheet"
+      }
+    ]
+  },
+  {
+    "name": "delete_worksheet",
+    "description": "Delete worksheet from workbook",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Name of sheet to delete"
+      }
+    ]
+  },
+  {
+    "name": "rename_worksheet",
+    "description": "Rename worksheet in workbook",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "old_name",
+        "type": "string",
+        "desc": "Current sheet name"
+      },
+      {
+        "name": "new_name",
+        "type": "string",
+        "desc": "New sheet name"
+      }
+    ]
+  },
+  {
+    "name": "copy_range",
+    "description": "Copy a range of cells to another location",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Source worksheet name"
+      },
+      {
+        "name": "source_start",
+        "type": "string",
+        "desc": "Starting cell of source range"
+      },
+      {
+        "name": "source_end",
+        "type": "string",
+        "desc": "Ending cell of source range"
+      },
+      {
+        "name": "target_start",
+        "type": "string",
+        "desc": "Starting cell for paste"
+      }
+    ]
+  },
+  {
+    "name": "delete_range",
+    "description": "Delete a range of cells and shift remaining cells",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "start_cell",
+        "type": "string",
+        "desc": "Starting cell of range"
+      },
+      {
+        "name": "end_cell",
+        "type": "string",
+        "desc": "Ending cell of range"
+      },
+      {
+        "name": "shift_direction",
+        "type": "string",
+        "desc": "Direction to shift cells (up or left)"
+      }
+    ]
+  },
+  {
+    "name": "merge_cells",
+    "description": "Merge a range of cells",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "start_cell",
+        "type": "string",
+        "desc": "Starting cell of range"
+      },
+      {
+        "name": "end_cell",
+        "type": "string",
+        "desc": "Ending cell of range"
+      }
+    ]
+  },
+  {
+    "name": "insert_rows",
+    "description": "Insert one or more rows starting at the specified row",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "start_row",
+        "type": "integer",
+        "desc": "Row number where to start inserting (1-based)"
+      },
+      {
+        "name": "count",
+        "type": "integer",
+        "desc": "Number of rows to insert (default: 1)"
+      }
+    ]
+  },
+  {
+    "name": "insert_columns",
+    "description": "Insert one or more columns starting at the specified column",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "start_col",
+        "type": "integer",
+        "desc": "Column number where to start inserting (1-based)"
+      },
+      {
+        "name": "count",
+        "type": "integer",
+        "desc": "Number of columns to insert (default: 1)"
+      }
+    ]
+  },
+  {
+    "name": "delete_sheet_rows",
+    "description": "Delete one or more rows starting at the specified row",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "start_row",
+        "type": "integer",
+        "desc": "Row number where to start deleting (1-based)"
+      },
+      {
+        "name": "count",
+        "type": "integer",
+        "desc": "Number of rows to delete (default: 1)"
+      }
+    ]
+  },
+  {
+    "name": "delete_sheet_columns",
+    "description": "Delete one or more columns starting at the specified column",
+    "arguments": [
+      {
+        "name": "filepath",
+        "type": "string",
+        "desc": "Path to Excel file"
+      },
+      {
+        "name": "sheet_name",
+        "type": "string",
+        "desc": "Target worksheet name"
+      },
+      {
+        "name": "start_col",
+        "type": "integer",
+        "desc": "Column number where to start deleting (1-based)"
+      },
+      {
+        "name": "count",
+        "type": "integer",
+        "desc": "Number of columns to delete (default: 1)"
+      }
+    ]
+  }
+]
